@@ -86,6 +86,8 @@
     <Compile Include="Assets/Scripts/AI/KingSaftyAnalyzer.cs" />
     <Compile Include="Assets/Scripts/board/BoardUtils.cs" />
     <Compile Include="Assets/Scripts/AI/MiniMax.cs" />
+    <Compile Include="Assets/Scripts/UnityGUI/InitGameObjs.cs" />
+    <Compile Include="Assets/Scripts/UnityGUI/SlowMotion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

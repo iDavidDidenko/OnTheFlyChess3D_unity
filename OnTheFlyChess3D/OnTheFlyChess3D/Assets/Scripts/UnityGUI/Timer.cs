@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 10;
     public static bool reset = false;
     public static bool startTimer = false;
+
     void Update()
     {
         if (startTimer)

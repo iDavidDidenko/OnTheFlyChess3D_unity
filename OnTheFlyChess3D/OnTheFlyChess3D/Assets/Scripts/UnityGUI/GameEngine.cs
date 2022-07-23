@@ -26,7 +26,7 @@ public class GameEngine : MonoBehaviour
     private byte botStepMove = 0;
 
     // Bot 
-    MiniMax strategy = new MiniMax(2);
+    private MiniMax strategy = new MiniMax(2);
 
     // Queue for turn's
     private Queue<PiecesTpye> turnQueue = new Queue<PiecesTpye>();
@@ -44,15 +44,16 @@ public class GameEngine : MonoBehaviour
 
     void Start()
     {
-        initPieceList();
-        initializePlayerTurn();
-        initGameObjTiles();
+        piecesListHash = InitGameObjs.initPieceList(ListObjWhitePieces, ListObjBlackPieces);
 
+        InitGameObjs.initGameObjTiles(objTile);
+
+        initializePlayerTurn();
 
         // init write stream
         //gameDataBase.initStreamWriter()
-        gameDataBase.initStreamRead();
-        savedGame = gameDataBase.Read();
+        //gameDataBase.initStreamRead();
+        //savedGame = gameDataBase.Read();
     }
     void Update()
     {
@@ -121,7 +122,6 @@ public class GameEngine : MonoBehaviour
         else
         {
             aiMove = strategy.execute(logicBoard);
-
         }
         
         transition = logicBoard.currentPlayer().makeMove(aiMove);
@@ -199,7 +199,7 @@ public class GameEngine : MonoBehaviour
         byte source;
         byte destination;
         // ToDO:
-        if(botStepMove > 5)
+        if(botStepMove < 3)
         {
             aiMove = botMovesObj.firstKnowingOpening(logicBoard, botStepMove);
             botStepMove++;
@@ -319,8 +319,10 @@ public class GameEngine : MonoBehaviour
     // transform gameObj position
     private void transGamePiece(byte i_source, byte i_destintion) 
     {
+
         int[] transPointsXY = getConvertPoints(i_destintion);
         float transPointY = getYpointByTypePiece(i_source);
+        
         piecesListHash[i_source].transform.position = new Vector3(transPointsXY[0], transPointY, transPointsXY[1]);
         changeKeyValueOfPieceDictionary(i_source, i_destintion);
         Debug.Log("change: " + "X: " + transPointsXY[0] + " Z: " + transPointsXY[1] + " source: " + i_source + " destination : " + i_destintion +
@@ -363,39 +365,11 @@ public class GameEngine : MonoBehaviour
         piecesListHash.Remove(i_source);
         piecesListHash.Add(i_destintion, piece);
     }
-    // init the Dictionary<short, GameObject> PiecesList to get EASY access to UI piece and control them
-    private void initPieceList()
-    {
-        for (short i = 0, j = 48; i < 16; i++, j++)
-        {
-            GameObject whiteObjPiece = ListObjWhitePieces[i];
-            GameObject blackObjPiece = ListObjBlackPieces[i];
-            piecesListHash.Add(i, whiteObjPiece);
-            piecesListHash.Add(j, blackObjPiece);
-        }
-    }
-    // init tiles to connect between  
-    private void initGameObjTiles()
-    {
-        GameObject initTile;
-        Vector3 setTilePosition = Vector3.zero;
-        float pointY = -0.364f;
-        for (byte i = 0; i < 8; i++)
-        {
-            for(byte j = 0; j < 8; j++ )
-            {
-                initTile = Instantiate(objTile);
-                initTile.transform.position = new Vector3(i, pointY, j);
-                initTile.transform.localScale = new Vector3(1,1f,1);
-            }
-        }
-    }
 
     private bool testBoard()
     {
-       int size = piecesListHash.Count;
-        Builder b = logicBoard.getBuilderConfig(); 
-       
+        int size = piecesListHash.Count;
+        Builder b = logicBoard.getBuilderConfig();
 
        return true;
     }

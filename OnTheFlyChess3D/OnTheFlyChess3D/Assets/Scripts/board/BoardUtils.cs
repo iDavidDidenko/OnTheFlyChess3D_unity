@@ -55,14 +55,6 @@ public class BoardUtils
         return i_futureDestination >= 0 && i_futureDestination < 64;
     }
 
- /*   public static int getCoordinateAtPosition(string i_position)
-    {
-        return POSITION_TO_COORDINATE[i_position];
-    }*/
 
-   /* public static int getPositionAtCoordinate(int i_coord)
-    {
-        return ALGEBREIC_NOTATION[i_coord];
-    }*/
 
 }

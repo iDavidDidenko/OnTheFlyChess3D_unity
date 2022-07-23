@@ -26,14 +26,7 @@ public class OpeningMove
         {
             return Move.MoveFactory.createMove(i_gameBoard, 62, 45);
         }
-        if(i_index == 3)
-        {
-            return Move.MoveFactory.createMove(i_gameBoard, 1, 18);
-        }
-        if(i_index == 4)
-        {
-            return Move.MoveFactory.createMove(i_gameBoard, 61, 25);
-        }
+
    
       
         return null;

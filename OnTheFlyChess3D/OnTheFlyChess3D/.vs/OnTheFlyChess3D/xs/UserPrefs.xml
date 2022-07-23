@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{0A9DF1AF-A620-6219-E80D-C3D6C3587C44}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enums/PieceColor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI/OpeningMove.cs">
     <Files>
-      <File FileName="Assets/Scripts/UnityGUI/GameEngine.cs" Line="207" Column="13" />
-      <File FileName="Assets/Scripts/board/Board.cs" Line="163" Column="60" />
-      <File FileName="Assets/Scripts/board/Move.cs" Line="227" Column="27" />
-      <File FileName="Assets/Scripts/Player/Player.cs" Line="114" Column="27" />
-      <File FileName="Assets/Scripts/Pieces/Pawn.cs" Line="25" Column="31" />
-      <File FileName="Assets/Scripts/AI/MiniMax.cs" Line="21" Column="17" />
-      <File FileName="Assets/Scripts/Pieces/Piece.cs" Line="33" Column="23" />
-      <File FileName="Assets/Scripts/Enums/PieceColor.cs" Line="43" Column="6" />
-      <File FileName="Assets/Scripts/board/BoardUtils.cs" Line="23" Column="35" />
+      <File FileName="Assets/Scripts/UnityGUI/GameEngine.cs" Line="202" Column="27" />
+      <File FileName="Assets/Scripts/UnityGUI/InitGameObjs.cs" Line="23" Column="40" />
+      <File FileName="Assets/Scripts/UnityGUI/Timer.cs" Line="10" Column="1" />
+      <File FileName="Assets/Scripts/UnityGUI/SlowMotion.cs" Line="10" Column="30" />
+      <File FileName="Assets/Scripts/AI/GameDataBase.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI/OpeningMove.cs" Line="32" Column="21" />
+      <File FileName="Assets/Scripts/Player/MoveTransition.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enums/MoveStatus.cs" Line="21" Column="2" />
+      <File FileName="Assets/Scripts/Pieces/Pawn.cs" Line="28" Column="37" />
+      <File FileName="Assets/Scripts/Enums/PieceColor.cs" Line="54" Column="26" />
+      <File FileName="Assets/Scripts/board/BoardUtils.cs" Line="47" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,11 +19,11 @@
           <Node name="OnTheFlyChess3D" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="AI" expanded="True" />
-                <Node name="board" expanded="True" />
-                <Node name="Enums" expanded="True">
-                  <Node name="PieceColor.cs" selected="True" />
+                <Node name="AI" expanded="True">
+                  <Node name="OpeningMove.cs" selected="True" />
                 </Node>
+                <Node name="board" expanded="True" />
+                <Node name="Enums" expanded="True" />
                 <Node name="Pieces" expanded="True" />
                 <Node name="Player" expanded="True" />
                 <Node name="UnityGUI" expanded="True" />
@@ -34,7 +36,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ab2a34ae-8e66-4ae1-8fd1-6dbb809c7c37" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f5583b1-c2bf-4ff7-877f-e5409e6abf95" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
