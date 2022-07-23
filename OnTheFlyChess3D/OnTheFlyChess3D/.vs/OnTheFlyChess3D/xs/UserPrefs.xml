@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{0A9DF1AF-A620-6219-E80D-C3D6C3587C44}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enums/PieceColor.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UnityGUI/GameEngine.cs" Line="207" Column="13" />
+      <File FileName="Assets/Scripts/board/Board.cs" Line="163" Column="60" />
+      <File FileName="Assets/Scripts/board/Move.cs" Line="227" Column="27" />
+      <File FileName="Assets/Scripts/Player/Player.cs" Line="114" Column="27" />
+      <File FileName="Assets/Scripts/Pieces/Pawn.cs" Line="25" Column="31" />
+      <File FileName="Assets/Scripts/AI/MiniMax.cs" Line="21" Column="17" />
+      <File FileName="Assets/Scripts/Pieces/Piece.cs" Line="33" Column="23" />
+      <File FileName="Assets/Scripts/Enums/PieceColor.cs" Line="43" Column="6" />
+      <File FileName="Assets/Scripts/board/BoardUtils.cs" Line="23" Column="35" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="OnTheFlyChess3D" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="AI" expanded="True" />
+                <Node name="board" expanded="True" />
+                <Node name="Enums" expanded="True">
+                  <Node name="PieceColor.cs" selected="True" />
+                </Node>
+                <Node name="Pieces" expanded="True" />
+                <Node name="Player" expanded="True" />
+                <Node name="UnityGUI" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ab2a34ae-8e66-4ae1-8fd1-6dbb809c7c37" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

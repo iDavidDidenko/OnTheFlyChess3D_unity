@@ -1,0 +1,126 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// TODO: adding finish mate game state to "MoveStatus" to UI as a alarm
+// TODO: adding alpha beta
+// TODO: for smart AI need to add for each piece his value on a current Tile
+
+
+public class MiniMax : MoveStrategy
+{
+    private BoardEvaluator boardEvaluator;
+    private int searchDepth;
+  
+    public MiniMax(int i_searchDepth)
+    {
+        boardEvaluator = new StandardBoardEvaluator();
+        this.searchDepth = i_searchDepth;
+    }
+
+    public Move execute(Board i_board)
+    {
+        Move bestMove = null;
+
+        int highestSeenvalue = int.MinValue;
+        int lowestSeenValue = int.MaxValue;
+        int currentValue;
+
+
+        int numMoves = i_board.currentPlayer().getLegalMoves().Count;
+
+        for (int i = 0; i < i_board.currentPlayer().getLegalMoves().Count; i++)
+        {
+            List<Move> m = i_board.currentPlayer().getLegalMoves()[i];
+
+            foreach (Move move in m)
+            {
+                MoveTransition moveTran = i_board.currentPlayer().makeMove(move);
+                if (moveTran.getMoveStatus())
+                {
+                    currentValue = i_board.currentPlayer().getPlayerColor() == PieceColor.WHITE ? min(moveTran.getTransitionBoard(), searchDepth - 1) :
+                                                                                                  max(moveTran.getTransitionBoard(), searchDepth - 1);
+
+                    if(i_board.currentPlayer().getPlayerColor() == PieceColor.WHITE && currentValue >= highestSeenvalue)
+                    {
+                        highestSeenvalue = currentValue;
+                        bestMove = move;
+                    }
+                    else if (i_board.currentPlayer().getPlayerColor() == PieceColor.BLACK && currentValue <= lowestSeenValue)
+                    {
+                        lowestSeenValue = currentValue;
+                        bestMove = move;
+                    }
+
+                }
+            }
+
+        }
+        return bestMove;
+    }
+    public int min(Board i_board, int i_depth)
+    {
+        if(i_depth == 0 || isEndGameSenario(i_board))
+        {
+            return boardEvaluator.evaluate(i_board, i_depth);
+        }
+        int lowestSeenValue = int.MaxValue;
+        
+        for(int i = 0; i < i_board.currentPlayer().getLegalMoves().Count; i++)
+        {
+            List<Move> m = i_board.currentPlayer().getLegalMoves()[i];
+
+            foreach(Move move in m)
+            {
+                MoveTransition moveTran = i_board.currentPlayer().makeMove(move);
+                if (moveTran.getMoveStatus())
+                {
+                    int currentValue = max(moveTran.getTransitionBoard(), i_depth - 1);
+                    if(currentValue <= lowestSeenValue)
+                    {
+                        lowestSeenValue = currentValue;
+                    }
+
+                }
+            }
+
+        }
+        return lowestSeenValue;
+
+    }
+    public static bool isEndGameSenario(Board i_board)
+    {
+        return i_board.currentPlayer().isInCheckMake() || i_board.currentPlayer().isInStaleMate();
+    }
+
+
+    public int max(Board i_board, int i_depth)
+    {
+        if (i_depth == 0 || isEndGameSenario(i_board))
+        {
+            return boardEvaluator.evaluate(i_board, i_depth);
+        }
+        int highestSeenValue = int.MinValue;
+
+        for (int i = 0; i < i_board.currentPlayer().getLegalMoves().Count; i++)
+        {
+            List<Move> m = i_board.currentPlayer().getLegalMoves()[i];
+
+            foreach (Move move in m)
+            {
+                MoveTransition moveTran = i_board.currentPlayer().makeMove(move);
+                if (moveTran.getMoveStatus())
+                {
+                    int currentValue = min(moveTran.getTransitionBoard(), i_depth - 1);
+                    if (currentValue >= highestSeenValue)
+                    {
+                        highestSeenValue = currentValue;
+                    }
+
+                }
+            }
+
+        }
+        return highestSeenValue;
+    }
+}
