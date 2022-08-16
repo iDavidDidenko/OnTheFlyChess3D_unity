@@ -50,42 +50,65 @@ public class GameEngine : MonoBehaviour
 
         initializePlayerTurn();
 
+
         // init write stream
-        //gameDataBase.initStreamWriter()
-        //gameDataBase.initStreamRead();
-        //savedGame = gameDataBase.Read();
+        //gameDataBase.initStreamWriter();
+        gameDataBase.initStreamRead();
+        savedGame = gameDataBase.Read();
     }
     void Update()
     {
-        liveGameTurnEngine();
+        //liveGameTurnEngine();
 
         //createSaveingGame();
-        //playKnowingGame();
+        knowingGame();
     }
+    private void knowingGame()
+    {
+        if (turnQueue.Peek() == PiecesTpye.White)
+        {
+            playKnowingGame();
+            turnQueue.Dequeue();
+        }
+        else if (turnQueue.Peek() == PiecesTpye.User)
+        {
+            UpdateMouseCoordinates();
+        }
+        else if (turnQueue.Peek() == PiecesTpye.Black)
+        {
+            playKnowingGame();
+            turnQueue.Dequeue();
+        }
 
+        if (turnQueue.Count == 0)
+        {
+            initializePlayerTurn();
+        }
+    }
+  
     // read a saved game to play
     private void playKnowingGame()
     {
         if(indexReadGame < savedGame.Count)
         {
-            
-
             string strLine = savedGame[indexReadGame];
 
-            int diff = strLine.Length - 1;
+            int diff = strLine.Length;
 
+           
             string stePoint = ",";
-            Debug.LogError("Lengthhhhhhhhhhhhhhhhhhh "+strLine.Length);
             int indexPoint = strLine.IndexOf(stePoint);
+            
 
             string strSource = strLine.Substring(0, indexPoint);
-            Debug.Log("str: " + strLine + " point: " + indexPoint + " s: " + strSource + " d: ");
+            
 
-            string strDest = strLine.Substring(indexPoint + 1, diff - 1);
+            string strDest = strLine.Substring(indexPoint + 1);
 
-          
 
             int source = int.Parse(strSource);
+
+          
 
             int dest = int.Parse(strDest);
 
@@ -97,7 +120,7 @@ public class GameEngine : MonoBehaviour
 
             transGamePiece((byte)source, (byte)dest);
 
-
+            indexReadGame++;
         }
         else
         {
@@ -114,7 +137,7 @@ public class GameEngine : MonoBehaviour
         byte source;
         byte destination;
         
-        if (botStepMove < 5)
+        if (botStepMove < 3)
         {
             aiMove = botMovesObj.firstKnowingOpening(logicBoard, botStepMove);
             botStepMove++;
@@ -319,10 +342,9 @@ public class GameEngine : MonoBehaviour
     // transform gameObj position
     private void transGamePiece(byte i_source, byte i_destintion) 
     {
-
         int[] transPointsXY = getConvertPoints(i_destintion);
         float transPointY = getYpointByTypePiece(i_source);
-        
+
         piecesListHash[i_source].transform.position = new Vector3(transPointsXY[0], transPointY, transPointsXY[1]);
         changeKeyValueOfPieceDictionary(i_source, i_destintion);
         Debug.Log("change: " + "X: " + transPointsXY[0] + " Z: " + transPointsXY[1] + " source: " + i_source + " destination : " + i_destintion +

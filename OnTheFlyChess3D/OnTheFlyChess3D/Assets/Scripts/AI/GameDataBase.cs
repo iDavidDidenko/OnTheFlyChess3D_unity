@@ -1,16 +1,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System;
-
-public class GameDataBase 
+using UnityEngine;
+public class GameDataBase : MonoBehaviour
 {
-    private string writePath = @"C:\Users\David\Desktop\OnTheFlyChess3D\OnTheFlyChess3D\DataBase\firstGame.txt";
-    private string readPath = @"C:\Users\David\Desktop\OnTheFlyChess3D\OnTheFlyChess3D\DataBase\firstGame.txt";
+    private string writePath = @"/Users/david/Desktop/t1/OnTheFlyChess3D/DataBase/firstGame.txt";
+    // correct syntax
+    private string readPath = @"/Users/david/Desktop/t1/OnTheFlyChess3D/DataBase/firstGame.txt";
 
     private FileStream initFileStream;
 
     private StreamWriter writeToFile;
     private StreamReader readFromFile;
+
+    // test
+
+    private string str;
+
+    // test
 
     public void initStreamWriter()
     {
@@ -21,6 +28,8 @@ public class GameDataBase
     {
         initFileStream = new FileStream(readPath, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
         readFromFile = new StreamReader(initFileStream);
+        //str = System.IO.File.ReadAllText(readPath);
+
     }
     public void Write(string i_writeString)
     {
@@ -30,11 +39,12 @@ public class GameDataBase
         }
         writeToFile.WriteLine(i_writeString);
     }
+
     public List<string> Read()
     {
         List<string> o_Data = new List<string>();
 
-        if(readFromFile == null)
+        if (readFromFile == null)
         {
             throw new Exception("Read Exepction");
         }
@@ -43,9 +53,10 @@ public class GameDataBase
         {
             o_Data.Add(readFromFile.ReadLine());
         }
+        
+
+
         return o_Data;
-
-
 
     }
     public void closeWrite()

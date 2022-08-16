@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class SlowMotion : MonoBehaviour
 {
-    
-    void Start()
+    private float fixedDeltaTime;
+    void Awake()
     {
-        Time.timeScale = 0.001f;
+        this.fixedDeltaTime = Time.fixedDeltaTime;
+        Time.timeScale = 0.03f;
+        
+    }
+
+    void Update()
+    {
+        Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
         Debug.Log("hii");
     }
 

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5876540867702327462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Bishop2 '
-  m_TagString: Untagged
+  m_TagString: Bishop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438076877431507831}
-  m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -1.8516833, y: 0.45039123, z: 2.0312254}
   m_LocalScale: {x: 7.3, y: 7.3, z: 7.3}
   m_Children:
@@ -31,7 +31,7 @@ Transform:
   - {fileID: 4301485478269412084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &6594866780609502673
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7721393093816053857}
   - component: {fileID: 477113837328328662}
   - component: {fileID: 262286435219153010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube6 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4301485478269412084}
   - component: {fileID: 7643013833013589659}
   - component: {fileID: 485299611539987213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere2 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
